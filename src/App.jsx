@@ -1,5 +1,6 @@
 import { ToastContainer, Bounce } from 'react-toastify';
 import AppRoutes from './routes/routes.jsx'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

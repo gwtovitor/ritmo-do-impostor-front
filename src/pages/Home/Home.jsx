@@ -19,7 +19,7 @@ export default function Home() {
     }, []);
 
     function connectSocket() {
-        if(codigo == '') {
+        if (codigo == '') {
             toast.error('🙄 Preencha o codigo da sala', {
                 position: "top-right",
                 autoClose: 5000,
@@ -29,7 +29,7 @@ export default function Home() {
                 draggable: true,
                 progress: undefined,
                 theme: "dark",
-                });
+            });
         }
         console.log('Connecting and emitting to "teste"');
         if (socket.current) {
@@ -44,17 +44,33 @@ export default function Home() {
                 </div>
                 <div className={styles.buttonsWrapper}>
                     <a onClick={() => { connectSocket() }}>Criar uma Sala</a>
-                    <input onChange={(e)=>{setCodigo(e.target.value)}} placeholder='CODIGO DA SALA'></input>
+                    <input onChange={(e) => { setCodigo(e.target.value) }} placeholder='CODIGO DA SALA'></input>
                     <a onClick={() => { connectSocket() }}>Entrar em uma Sala</a>
                 </div>
 
-                <div className={styles.icons}>
-                    <Olho1 />
-                    <Musica1 />
-                    <Musica2 />
-                    <Raio1 />
-                </div>
+                <Icons />
+
             </div>
         </div>
+    )
+}
+
+export function Icons() {
+    return (
+        <>
+            <div className={`${styles.icons} ${styles.eye}`}>
+                <Olho1 />
+            </div>
+            <div className={`${styles.icons} ${styles.music1}`}>
+                <Musica1 />
+
+            </div>
+            <div className={`${styles.icons} ${styles.music2}`}>
+                <Musica2 />
+            </div>
+            <div className={`${styles.icons} ${styles.rain}`}>
+                <Raio1 />
+            </div>
+        </>
     )
 }
