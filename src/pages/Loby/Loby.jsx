@@ -1,44 +1,53 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styles from './loby.module.scss'
-import io from 'socket.io-client'
-import { useEffect, useRef, useState } from 'react'
+
 import PlayerList from '../../components/PlayerList/PlayerList'
-import { useParams } from 'react-router-dom'
-const players = [
-    'Vitor',
-    'Pedro',
-    'Teste'
-]
-const randomIndex = Math.floor(Math.random() * players.length);
+import { useEffect } from 'react'
+// import { useEffect } from 'react'
 
-export default function Loby() {
-   
-    const [playerList, setPlayerList] = useState(null)
-    const { id } = useParams();
-    const socket = io('http://localhost:5000');
-    const [admin, setAdmin] = useState(false)
-    const joinGameSent = useRef(false)
 
-    useEffect(() => {
-        socket.on('attList', (listaDeJogadores) => {
-            setPlayerList(listaDeJogadores);
-            console.log(listaDeJogadores, '🙄🙄');
-        });
-        if (!joinGameSent.current) {
-            socket.emit('joinGame', { nomeDoJogador: players[randomIndex], roomHash: id });
-            joinGameSent.current = true; 
-        }
-        return () => {
-            socket.off('attList');
-        };
-    }, [id]); 
+export default function Loby({
+    setPlayerInfo,
+    playerInfo,
+    playerName,
+    isOpen,
+    setPlayerList,
+    playerList,
+    socket,
+    hash,
+    setCurrentPage
+}) {
 
+    if (!isOpen) return
+    socket.emit('joinGame', { playerName: playerName, hash: hash });
+
+    socket.on('attList', (playerList) => {
+        setPlayerList(playerList);
+    });
+
+    socket.on('playerInfo', (playerInfo) => {
+        setPlayerInfo(playerInfo)
+    })
+
+    if (!playerList) return
     return (
         <div className={styles.lobyWrapper}>
             <div className={styles.loby}>
-                <PlayerList playerList={playerList} />
-                {admin && <button>Começar o jogo</button>}
+                <div className={styles.hashWrapper}>
+                    <div>Click para copiar o codigo</div>
+                    <span>{hash}</span>
+                </div>
+                <PlayerList playerInfo={playerInfo} playerList={playerList} />
+                {isAdmin(playerList, playerInfo) && <button onClick={()=>{setCurrentPage('playing')}}>Teste</button>}
             </div>
         </div>
     )
+}
+
+function isAdmin(playerList, playerInfo) {
+    const admin = playerList.find(player => player.isAdmin == true);
+    if (admin && admin.id === playerInfo.id) {
+        return true;
+    }
+    return false
 }

@@ -19,7 +19,7 @@
   align-items: center;
   overflow: hidden;
   background-color: black;
-  .loby{
+  .loby {
     position: relative;
     background-color: #ff9e04;
     width: 100%;
@@ -29,5 +29,43 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    .hashWrapper {
+      display: flex;
+      position: relative;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      div{
+        text-decoration: none;
+        text-transform: uppercase;
+        position: fixed;
+        top: 12px;
+        font-size: 0.8rem;
+        color: black;
+        -webkit-text-stroke-width: 0.5px;
+      }
+      span {
+        position: fixed;
+        top: 50px;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        font-size: 1rem;
+        padding: 12px 24px;
+        background: #f43b64;
+        color: #fffbe6 !important;
+        border-radius: 4px;
+        border: 2px solid #000000;
+        cursor: pointer;
+        text-decoration: none;
+        text-transform: uppercase;
+        -webkit-text-stroke-width: 0.7px;
+        //   -webkit-text-stroke-width: 0.10vw;
+        //   -webkit-text-stroke-color: #000;
+        box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 1);
+        transition: background-color 0.5s;
+        transition: transform 0.5s;
+      }
+    }
   }
 }

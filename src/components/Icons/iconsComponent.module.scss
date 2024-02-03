@@ -1,0 +1,31 @@
+.icons {
+    position: absolute;
+    max-width: 100%;
+    max-height: 50%;
+    display: flex;
+    gap: 24px;
+    margin-top: 25px;
+    &.eye{
+      bottom: 40px;
+      left: 10px;
+    }
+    &.music1{
+      top: 100px;
+      left: 10px;
+    }
+    &.music2{
+      right: 10px;
+    }
+    &.rain{
+      bottom: 100px;
+      right: 24px;
+    }
+    svg {
+      max-width: 100px;
+      max-height: 100px;
+    }
+    svg:hover{
+      transform:scale(1.2) ;
+
+    }
+  }
