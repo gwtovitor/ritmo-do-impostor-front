@@ -11,7 +11,6 @@ export default function Loby({
     playerInfo,
     playerName,
     isOpen,
-    setPlayerList,
     playerList,
     socket,
     hash,
@@ -21,18 +20,16 @@ export default function Loby({
     if (!isOpen) return
     socket.emit('joinGame', { playerName: playerName, hash: hash });
 
-    socket.on('attList', (playerList) => {
-        setPlayerList(playerList);
-    });
-
     socket.on('playerInfo', (playerInfo) => {
         setPlayerInfo(playerInfo)
     })
+    socket.on('toGame', () => {
+        setCurrentPage('playing')
+    })
 
     function toPlay() {
-        // if (playerList.length < 2) return
+        if (playerList.length < 1) return
         socket.emit('startGame', { hash: hash })
-        // setCurrentPage('playing')
     }
 
     if (!playerList) return

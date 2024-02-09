@@ -12,7 +12,15 @@ export default function Home() {
     const [hash, setHash] = useState(null)
     const [playerName, setPlayerName] = useState('')
     const [playerInfo, setPlayerInfo] = useState(null)
+    const [start, setStart] = useState(false)
 
+    socket.on('startTheGame', () => {
+        setStart(true)
+    })
+    
+    socket.on('attList', (playerList) => {
+        setPlayerList(playerList);
+    });
 
     return (
         <div className={styles.homeWrapper}>
@@ -41,6 +49,9 @@ export default function Home() {
                 socket={socket}
                 playerInfo={playerInfo} 
                 playerList={playerList}
+                hash={hash}
+                start={start}
+                setStart={setStart}
             />
 
         </div>
