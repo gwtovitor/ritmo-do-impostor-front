@@ -11,7 +11,6 @@ export default function Home() {
     const [currentPage, setCurrentPage] = useState('homePage')
     const [hash, setHash] = useState(null)
     const [playerName, setPlayerName] = useState('')
-    const [impostor, setImpostor] = useState('')
     const [playerInfo, setPlayerInfo] = useState(null)
 
 
@@ -38,8 +37,10 @@ export default function Home() {
             />
             <Playing
                 isOpen={openCurrentPage('playing', currentPage)}
-                setCurrentPage={setCurrentPage} socket={socket}
-                playerInfo={playerInfo} playerList={playerList}
+                setCurrentPage={setCurrentPage} 
+                socket={socket}
+                playerInfo={playerInfo} 
+                playerList={playerList}
             />
 
         </div>

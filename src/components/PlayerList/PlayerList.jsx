@@ -24,6 +24,7 @@ function Player({ key, playerInfo, player}) {
             <span>{player.name}</span>
             <div className={styles.iconsWrapper}>
                 {player.isAdmin ? <Crown /> : null}
+                {player.isImpostor ? 'Impostor' : null}
                 {playerInfo.id == player.id ? <Person /> : null}
             </div>
         </div>

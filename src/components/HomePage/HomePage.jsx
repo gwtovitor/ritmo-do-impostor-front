@@ -6,6 +6,7 @@ export default function HomePage({ setCurrentPage, isOpen, setHash, socket, play
 
     async function createRoom() {
         if (!isOpen) return
+        if(!playerName) return
         socket.emit('createRoom', {playerName: playerName})
     }
     
