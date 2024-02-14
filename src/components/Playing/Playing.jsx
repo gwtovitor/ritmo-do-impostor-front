@@ -1,10 +1,12 @@
 import ReactPlayer from 'react-player'
 import { Voting } from '../Voting/Voting'
+import styles from './playing.module.scss'
+
 export default function Playing({ isOpen, socket, playerList, playerInfo, start, setStart, hash }) {
 
     if (!isOpen) return
     return (
-        <div>
+        <div className={styles.playing}>
             <Voting isOpen={true} socket={socket} playerInfo={playerInfo} playerList={playerList} hash={hash} />
             <ReactPlayer playing={start} width={0} height={0} onReady={() => { socket.emit('iamReady', { hash: hash }) }} url='https://www.youtube.com/watch?v=LXb3EKWsInQ' />
             {!start ? <div style={{ color: 'white' }}>
