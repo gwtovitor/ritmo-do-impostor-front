@@ -41,7 +41,6 @@ export default function HomePage({ hash, setCurrentPage, isOpen, setHash, socket
     }
 
     socket.on('createdRoom', (data) => {
-        console.log(data)
         setHash(data.hash);
         setCurrentPage('loby')
     });

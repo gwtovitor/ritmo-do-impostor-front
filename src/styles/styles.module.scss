@@ -38,7 +38,10 @@ $borderRadius: 6px;
   &.secundary {
     color: #fffbe6 !important;
     background: #6a7584;
-
+  }
+  &.prepare {
+    color: black !important;
+    background: $success;
   }
 }
 

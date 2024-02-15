@@ -11,8 +11,6 @@ export default function Loby({
     hash,
     setCurrentPage
 }) {
-    console.log(playerList, 'PL')
-    console.log(playerInfo, 'PÌ')
     if (!isOpen) return
     socket.emit('joinGame', { playerName: playerName, hash: hash });
 

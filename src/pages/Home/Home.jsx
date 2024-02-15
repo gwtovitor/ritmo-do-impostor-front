@@ -25,11 +25,13 @@ export default function Home() {
     socket.on('playerInfo', (playerInfo) => {
         setPlayerInfo(playerInfo)
     })
-    
-    socket.on('mostVoted', (eliminated) => {
-        console.log(eliminated, 'ELIMINATED')
+
+    socket.on('playerWin', () => {
+        console.log('Players WSin')
     })
-    
+    socket.on('impostorWin', () => {
+        console.log('impostor WSin')
+    })
 
     return (
         <div className={styles.homeWrapper}>
