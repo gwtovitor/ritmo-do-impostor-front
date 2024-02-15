@@ -1,0 +1,55 @@
+/// variables
+
+$primary: #1c71e3;
+$primaryHover: #081d3a;
+$inputBg: #f8f8f8;
+$error: #ef8080;
+$textLight: #eaf2f6;
+$textDark: #2b2b2b;
+$disabledBg: #6a7584;
+$disabledColor: #c4c4c4;
+$danger: #ff2727;
+$success: #27ff57;
+$warning: #ffdc27;
+
+$borderRadius: 6px;
+* {
+  font-family: "Bowlby One", cursive;
+}
+.button {
+  display: flex;
+  z-index: 3;
+  justify-content: center;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 4px;
+  border: 0.2rem solid #000000;
+  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  -webkit-text-stroke-width: 1px;
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
+  transition: background-color 0.5s;
+  transition: transform 0.5s;
+  &.primary {
+    background: #f43b64;
+    color: #fffbe6 !important;
+  }
+  &.secundary {
+    color: #fffbe6 !important;
+    background: #6a7584;
+
+  }
+}
+
+.input {
+  font-family: "Bowlby One", cursive;
+  height: 28px;
+  border-radius: 4px;
+  border: 0.2rem solid #000000;
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
+  transition: background-color 0.5s;
+  -webkit-text-stroke-width: 1px;
+  outline: none !important;
+  z-index: 3;
+}

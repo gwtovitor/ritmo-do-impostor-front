@@ -13,14 +13,17 @@ export function Voting({ isOpen, playerList, playerInfo, socket, hash }) {
 
     return (
         <div className={styles.voting}>
-            <p>Votação !</p>
+            <div className={styles.wrapperHeader}>
+                <p>Votação !</p>
+                <span>Click no nome do jogador que deseja eliminar</span>
+            </div>
             <div>
                 {isVoting ? playerList.map((player, index) => {
                     return (
 
                         <div key={index} className={styles.player}>
                             {
-                                playerInfo.id == player.id ? null : <p onClick={() => { vote(player) }}>{player.name}</p>
+                                playerInfo.id == player.id ? null : <p className={`${styles.button} ${styles.secundary}`} onClick={() => { vote(player) }}>{player.name}</p>
                             }
                         </div>
 

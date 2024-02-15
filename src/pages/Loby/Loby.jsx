@@ -1,10 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import styles from './loby.module.scss'
-
 import PlayerList from '../../components/PlayerList/PlayerList'
-
-// import { useEffect } from 'react'
-
 
 export default function Loby({
     setPlayerInfo,
@@ -16,13 +11,11 @@ export default function Loby({
     hash,
     setCurrentPage
 }) {
-
+    console.log(playerList, 'PL')
+    console.log(playerInfo, 'PÌ')
     if (!isOpen) return
     socket.emit('joinGame', { playerName: playerName, hash: hash });
 
-    socket.on('playerInfo', (playerInfo) => {
-        setPlayerInfo(playerInfo)
-    })
     socket.on('toGame', () => {
         setCurrentPage('playing')
     })
@@ -41,7 +34,7 @@ export default function Loby({
                     <span onClick={() => {navigator.clipboard.writeText(hash)}}>{hash}</span>
                 </div>
                 <PlayerList playerInfo={playerInfo} playerList={playerList} />
-                {isAdmin(playerList, playerInfo) && <button onClick={() => { toPlay() }}>Teste</button>}
+                {isAdmin(playerList, playerInfo) && <button className={`${styles.button} ${styles.startBtn}`} onClick={() => { toPlay() }}>Jogar !</button>}
                 
             </div>
         </div>

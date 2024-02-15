@@ -17,14 +17,24 @@ export default function Home() {
     socket.on('startTheGame', () => {
         setStart(true)
     })
-    
+
     socket.on('attList', (playerList) => {
         setPlayerList(playerList);
     });
 
+    socket.on('playerInfo', (playerInfo) => {
+        setPlayerInfo(playerInfo)
+    })
+    
+    socket.on('mostVoted', (eliminated) => {
+        console.log(eliminated, 'ELIMINATED')
+    })
+    
+
     return (
         <div className={styles.homeWrapper}>
             <HomePage
+                hash={hash}
                 playerName={playerName}
                 setPlayerName={setPlayerName}
                 socket={socket}
@@ -45,9 +55,9 @@ export default function Home() {
             />
             <Playing
                 isOpen={openCurrentPage('playing', currentPage)}
-                setCurrentPage={setCurrentPage} 
+                setCurrentPage={setCurrentPage}
                 socket={socket}
-                playerInfo={playerInfo} 
+                playerInfo={playerInfo}
                 playerList={playerList}
                 hash={hash}
                 start={start}
