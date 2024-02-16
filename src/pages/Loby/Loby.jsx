@@ -1,8 +1,9 @@
 import styles from './loby.module.scss'
 import PlayerList from '../../components/PlayerList/PlayerList'
+import { Toast } from '../../components/Toast/Toast';
+
 
 export default function Loby({
-    setPlayerInfo,
     playerInfo,
     playerName,
     isOpen,
@@ -11,7 +12,9 @@ export default function Loby({
     hash,
     setCurrentPage
 }) {
+
     if (!isOpen) return
+        
     socket.emit('joinGame', { playerName: playerName, hash: hash });
 
     socket.on('toGame', () => {
@@ -19,7 +22,10 @@ export default function Loby({
     })
 
     function toPlay() {
-        if (playerList.length < 1) return
+        if (playerList.length < 2){
+            Toast('Só é possivel jogar com no mínimo 3 jogadores')
+            return  
+        }
         socket.emit('startGame', { hash: hash })
     }
 

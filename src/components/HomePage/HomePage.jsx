@@ -1,23 +1,14 @@
 import { Logo } from "../Logo/Logo"
 import styles from './homePage.module.scss'
 import { IconsComponent } from "../Icons/IconsComponent"
-import { toast } from "react-toastify"
+import { Toast } from "../Toast/Toast"
 
 export default function HomePage({ hash, setCurrentPage, isOpen, setHash, socket, playerName, setPlayerName }) {
     if (!isOpen) return
 
     async function createRoom() {
         if (!playerName) {
-            toast('Insira seu Nome', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            })
+            Toast('Insira seu Nome')
             return
         }
         socket.emit('createRoom', { playerName: playerName })
@@ -25,16 +16,7 @@ export default function HomePage({ hash, setCurrentPage, isOpen, setHash, socket
 
     async function joinRoom() {
         if (!playerName || !hash) {
-            toast('Insira o seu nome e o codigo da sala !', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            })
+            Toast('Insira o seu nome e o codigo da sala !')
             return
         }
         setCurrentPage('loby')
@@ -48,7 +30,6 @@ export default function HomePage({ hash, setCurrentPage, isOpen, setHash, socket
     return (
         <div className={styles.home}>
             <Logo />
-
             <div className={styles.buttonsWrapper}>
                 <div className={styles.nameWrapper}>
                     <input className={`${styles.input}`} onChange={(e) => { setPlayerName(e.target.value) }} placeholder='INSIRA SEU NOME'></input>
