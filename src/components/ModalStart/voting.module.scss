@@ -1,0 +1,63 @@
+@import "../../styles/styles.module.scss";
+
+.voting {
+  position: fixed;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f43b64;
+  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
+  z-index: 20;
+  width: 80vw;
+  height: 90vh;
+  .wrapperVoting {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-direction: column;
+
+    .wrapperHeader {
+      text-align: center;
+      p {
+        font-size: 1.2rem;
+      }
+      span {
+        font-size: 0.8rem;
+      }
+    }
+    .mapWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .player {
+      gap: 12px;
+      display: flex;
+    }
+
+    &.show {
+      display: block;
+    }
+    &.hidden {
+      display: none;
+    }
+  }
+  .voted{
+    animation:slide-in-elliptic-top-fwd .7s cubic-bezier(.25,.46,.45,.94) both;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    
+  }
+}
+
+
+ @keyframes slide-in-elliptic-top-fwd{0%{transform:translateY(-600px) rotateX(-30deg) scale(0);transform-origin:50% 100%;opacity:0}100%{transform:translateY(0) rotateX(0) scale(1);transform-origin:50% 1400px;opacity:1}}

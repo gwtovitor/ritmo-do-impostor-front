@@ -13,6 +13,7 @@
     "module": "^1.2.5",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",
+    "react-countdown-circle-timer": "^3.2.1",
     "react-dom": "^18.2.0",
     "react-player": "^2.14.1",
     "react-router-dom": "^6.22.0",

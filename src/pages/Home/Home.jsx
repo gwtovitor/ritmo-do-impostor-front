@@ -13,9 +13,12 @@ export default function Home() {
     const [playerName, setPlayerName] = useState('')
     const [playerInfo, setPlayerInfo] = useState(null)
     const [start, setStart] = useState(false)
+    const [playList, setPlayList] = useState([])
+
 
     socket.on('startTheGame', () => {
         setStart(true)
+        console.log('to aquio')
     })
 
     socket.on('attList', (playerList) => {
@@ -49,11 +52,13 @@ export default function Home() {
                 playerInfo={playerInfo}
                 playerName={playerName}
                 playerList={playerList}
+                setPlayList={setPlayList}
                 socket={socket}
                 hash={hash}
                 setPlayerList={setPlayerList}
                 setCurrentPage={setCurrentPage}
                 isOpen={openCurrentPage('loby', currentPage)}
+                setStart={setStart}
             />
             <Playing
                 isOpen={openCurrentPage('playing', currentPage)}
@@ -64,6 +69,7 @@ export default function Home() {
                 hash={hash}
                 start={start}
                 setStart={setStart}
+                playList={playList}
             />
 
         </div>
