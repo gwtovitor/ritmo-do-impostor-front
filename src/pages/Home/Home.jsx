@@ -13,12 +13,11 @@ export default function Home() {
     const [playerName, setPlayerName] = useState('')
     const [playerInfo, setPlayerInfo] = useState(null)
     const [start, setStart] = useState(false)
-    const [playList, setPlayList] = useState([])
+    const [music, setMusic] = useState('')
 
 
     socket.on('startTheGame', () => {
         setStart(true)
-        console.log('to aquio')
     })
 
     socket.on('attList', (playerList) => {
@@ -35,6 +34,10 @@ export default function Home() {
     socket.on('impostorWin', () => {
         console.log('impostor WSin')
     })
+    socket.on('toGame', ({ music }) => {
+        setCurrentPage('playing')
+        setMusic(music)
+    })
 
     return (
         <div className={styles.homeWrapper}>
@@ -47,18 +50,15 @@ export default function Home() {
                 setCurrentPage={setCurrentPage}
                 isOpen={openCurrentPage('homePage', currentPage)}
             />
+    
             <Loby
-                setPlayerInfo={setPlayerInfo}
                 playerInfo={playerInfo}
                 playerName={playerName}
+                setPlayerInfo={setPlayerInfo}
+                isOpen={openCurrentPage('loby', currentPage)}
                 playerList={playerList}
-                setPlayList={setPlayList}
                 socket={socket}
                 hash={hash}
-                setPlayerList={setPlayerList}
-                setCurrentPage={setCurrentPage}
-                isOpen={openCurrentPage('loby', currentPage)}
-                setStart={setStart}
             />
             <Playing
                 isOpen={openCurrentPage('playing', currentPage)}
@@ -69,7 +69,7 @@ export default function Home() {
                 hash={hash}
                 start={start}
                 setStart={setStart}
-                playList={playList}
+                music={music}
             />
 
         </div>

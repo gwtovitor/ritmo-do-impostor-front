@@ -2,7 +2,7 @@ import { useState } from 'react'
 import styles from './voting.module.scss'
 
 
-export function Voting({ isOpen, playerList, playerInfo, socket, hash, setOpen, setUrl, setCurrentPage }) {
+export function Voting({ isOpen, playerList, playerInfo, socket, hash, setOpen, setCurrentPage }) {
     const [isVoting, setVoting] = useState(true)
 
     const [eliminated, setElemitad] = useState('')
@@ -19,7 +19,6 @@ export function Voting({ isOpen, playerList, playerInfo, socket, hash, setOpen, 
     })
 
     function prepared(){
-        setUrl('https://www.youtube.com/watch?v=FUz0a2cl_RM&list=RDkdAWG-jLb9Y&index=27')
         setOpen(false)
         setVoting(true)
         setElemitad('')

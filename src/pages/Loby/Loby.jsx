@@ -15,9 +15,6 @@ export default function Loby({
     playerList,
     socket,
     hash,
-    setCurrentPage,
-    setPlayList,
-    setStart
 }) {
     const [selectedPlayList, setSelectedPlayList] = useState('')
 
@@ -25,11 +22,7 @@ export default function Loby({
 
     socket.emit('joinGame', { playerName: playerName, hash: hash });
 
-    socket.on('toGame', ({ playList }) => {
-        setCurrentPage('playing')
-        setPlayList(playList)
-        setStart(true)
-    })
+
 
     function toPlay() {
         if (selectedPlayList == '' || selectedPlayList == 'Selecione uma playlist') {
