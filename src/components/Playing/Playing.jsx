@@ -9,9 +9,25 @@ export default function Playing({ isOpen, music, socket, playerList, playerInfo,
     const playerRef = useRef()
     const [openModalStart, setOpenModalStart] = useState(true)
 
+    socket.on('tie',()=> {
+        /// inserir um modal de empate
+        setisOpenVoting(false)
+        setOpenModalStart(true)
+    })
+    socket.on('impostorWin',()=> {
+        console.log('impostorWin')
+    })
+    socket.on('mostVoted',(mostVoted)=> {
+        console.log(mostVoted)
+    })
+
     useEffect(() => {
         if (start) {
             setOpenModalStart(false)
+            setTimeout(() => {
+                setStart(false)
+                setisOpenVoting(true)
+            }, 10000)
         }
     }, [start])
 

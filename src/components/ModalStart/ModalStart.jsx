@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import styles from './voting.module.scss'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
@@ -23,7 +24,7 @@ export function ModalStart({ isOpen, start, socket, hash, setOpenModalStart, isI
                 colors={['#004777', '#F7B801', '#A30000', '#A30000']}
                 colorsTime={[7, 5, 2, 0]}
             >
-                {({ remainingTime }) => {return <div>{remainingTime}{text}</div>}}
+                {({ remainingTime }) => {return <div>{text != '' ? text : remainingTime}</div>}}
             </CountdownCircleTimer>
 
 
