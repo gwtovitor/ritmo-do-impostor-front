@@ -1,30 +1,46 @@
 import { useState } from 'react'
 import styles from './voting.module.scss'
+import { EndVotationModal } from '../EndVotationModal/EndVotationModal'
 
 
-export function Voting({ isOpen, playerList, playerInfo, socket, hash, setOpen, setCurrentPage }) {
+export function Voting({ isOpen, setOpenModalStart, playerList, playerInfo, socket, hash, setOpen, setCurrentPage }) {
     const [isVoting, setVoting] = useState(true)
 
-    const [eliminated, setElemitad] = useState('')
-
+    const [openEndVotation, setOpenEndVotation] = useState(false)
+    const [modalType, setModalType] = useState(null)
+    const [mostVoted, setMostVoted] = useState(null)
+  
     if (!isOpen) return
 
     function vote(player) {
         socket.emit('voting', { iAm: playerInfo.id, votedPlayer: player.id, hash: hash })
         setVoting(false)
     }
-
-    socket.on('mostVoted', (eliminated) => {
-        setElemitad(eliminated)
+    function tieFunction() {
+        console.log('aqui')
+        // setOpenModalStart(true)
+        // setOpen(false)
+    }
+ 
+    socket.on('tie', () => {
+        setModalType('tie')
+        setOpenEndVotation(true)
     })
 
-    function prepared(){
+    socket.on('impostorWin', () => {
+        console.log('impostorWin')
+    })
+    socket.on('mostVoted', (mostVoted) => {
+        console.log(mostVoted)
+    })
+
+    function prepared() {
         setOpen(false)
         setVoting(true)
-        setElemitad('')
+        setEliminated('')
     }
 
-    function goToLoby(){
+    function goToLoby() {
         setOpen(false)
         setCurrentPage('loby')
     }
@@ -48,22 +64,22 @@ export function Voting({ isOpen, playerList, playerInfo, socket, hash, setOpen, 
                                         >
                                             {player.name}
                                         </p>
-                                        }
+                                    }
                                 </div>
                             )
                         })}
                     </div>
                 </div> :
                 <div className={styles.eliminated}>
-                    {eliminated ?
-                        <div className={styles.voted}>
-                            {eliminated.id == playerInfo.id ? <>Você foi eliminado <button onClick={()=>{goToLoby()}} className={`${styles.button} ${styles.secundary}`}>Voltar ao Loby ?</button></> :<> O jogador eliminado foi: {eliminated.name} <button onClick={()=>{prepared()}} className={`${styles.button} ${styles.prepare}`}>Preparado ?</button></>}
-                            
-                        </div>
-                        :
-                        <span>Aguardando outros jogadores votarem !</span>
-                    }
-
+                    <EndVotationModal
+                        isOpen={openEndVotation}
+                        setIsOpen={setOpenEndVotation}
+                        modalType={modalType}
+                        mostVoted={mostVoted}
+                        playerInfo={playerInfo}
+                        setOpenModalStart={setOpenModalStart}
+                        setOpenVoting={setOpen}
+                    />
                 </div>
             }
 

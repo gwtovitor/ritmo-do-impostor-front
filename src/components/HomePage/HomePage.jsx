@@ -2,6 +2,7 @@ import { Logo } from "../Logo/Logo"
 import styles from './homePage.module.scss'
 import { IconsComponent } from "../Icons/IconsComponent"
 import { Toast } from "../Toast/Toast"
+import { EndVotationModal } from "../EndVotationModal/EndVotationModal"
 
 export default function HomePage({ hash, setCurrentPage, isOpen, setHash, socket, playerName, setPlayerName }) {
     if (!isOpen) return

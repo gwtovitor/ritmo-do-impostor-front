@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ReactPlayer from 'react-player'
 import { Voting } from '../Voting/Voting'
 import styles from './playing.module.scss'
@@ -9,18 +10,7 @@ export default function Playing({ isOpen, music, socket, playerList, playerInfo,
     const playerRef = useRef()
     const [openModalStart, setOpenModalStart] = useState(true)
 
-    socket.on('tie',()=> {
-        /// inserir um modal de empate
-        setisOpenVoting(false)
-        setOpenModalStart(true)
-    })
-    socket.on('impostorWin',()=> {
-        console.log('impostorWin')
-    })
-    socket.on('mostVoted',(mostVoted)=> {
-        console.log(mostVoted)
-    })
-
+ 
     useEffect(() => {
         if (start) {
             setOpenModalStart(false)
@@ -38,9 +28,9 @@ export default function Playing({ isOpen, music, socket, playerList, playerInfo,
                 <ModalStart socket={socket} hash={hash} isOpen={openModalStart} setOpenModalStart={setOpenModalStart} />
                 :
                 <>
-                    {!isOpenVoting ?
-                        <ReactPlayer ref={playerRef} playing={start} width={0} height={0} url={music} /> :
-                        <Voting setCurrentPage={setCurrentPage} isOpen={isOpenVoting} setOpen={setisOpenVoting} socket={socket} playerInfo={playerInfo} playerList={playerList} hash={hash} />
+                    {isOpenVoting ?
+                        <Voting setOpenModalStart={setOpenModalStart} setCurrentPage={setCurrentPage} isOpen={isOpenVoting} setOpen={setisOpenVoting} socket={socket} playerInfo={playerInfo} playerList={playerList} hash={hash} /> :
+                        <ReactPlayer ref={playerRef} playing={start} width={0} height={0} url={music} /> 
                     }
                     {!start ? <div style={{ color: 'white' }}>
                         Carregando....

@@ -1,0 +1,23 @@
+@import '../../styles/styles.module.scss';
+
+.modal{
+    position: fixed;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $error;
+    box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
+    z-index: 20;
+    padding: 24px;
+    gap: 24px;
+    &.tie{
+        width: 30vw;
+        height: 20vh;
+        text-align: center;
+    }
+}
