@@ -16,34 +16,29 @@ export function Voting({ isOpen, setOpenModalStart, playerList, playerInfo, sock
         socket.emit('voting', { iAm: playerInfo.id, votedPlayer: player.id, hash: hash })
         setVoting(false)
     }
-    function tieFunction() {
-        console.log('aqui')
-        // setOpenModalStart(true)
-        // setOpen(false)
-    }
- 
+   
     socket.on('tie', () => {
         setModalType('tie')
         setOpenEndVotation(true)
     })
 
-    socket.on('impostorWin', () => {
-        console.log('impostorWin')
+    socket.on('playerWin', (mostVoted) => {
+        setModalType('playersWin')
+        setOpenEndVotation(true)
+        setMostVoted(mostVoted)
     })
+
     socket.on('mostVoted', (mostVoted) => {
-        console.log(mostVoted)
+        setModalType('')
+        setOpenEndVotation(true)
+        setMostVoted(mostVoted)
     })
 
-    function prepared() {
-        setOpen(false)
-        setVoting(true)
-        setEliminated('')
-    }
-
-    function goToLoby() {
-        setOpen(false)
-        setCurrentPage('loby')
-    }
+    socket.on('impostorWin', (mostVoted) => {
+        setMostVoted(mostVoted)
+        setModalType('impostorWin')
+        setOpenEndVotation(true)
+    })
 
     return (
         <div className={styles.voting}>
@@ -63,6 +58,7 @@ export function Voting({ isOpen, setOpenModalStart, playerList, playerInfo, sock
                                             onClick={() => { vote(player) }}
                                         >
                                             {player.name}
+                                            {player.isImpostor? 'impostor' : ''}
                                         </p>
                                     }
                                 </div>
@@ -72,6 +68,7 @@ export function Voting({ isOpen, setOpenModalStart, playerList, playerInfo, sock
                 </div> :
                 <div className={styles.eliminated}>
                     <EndVotationModal
+                        playerList={playerList}
                         isOpen={openEndVotation}
                         setIsOpen={setOpenEndVotation}
                         modalType={modalType}

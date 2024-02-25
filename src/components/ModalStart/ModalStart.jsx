@@ -19,7 +19,7 @@ export function ModalStart({ isOpen, start, socket, hash, setOpenModalStart, isI
 
             <CountdownCircleTimer
                 isPlaying={isOpen}
-                duration={20}
+                duration={2}
                 onComplete={() => onComplete()}
                 colors={['#004777', '#F7B801', '#A30000', '#A30000']}
                 colorsTime={[7, 5, 2, 0]}
