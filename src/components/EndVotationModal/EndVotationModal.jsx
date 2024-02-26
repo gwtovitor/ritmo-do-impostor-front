@@ -41,7 +41,7 @@ export function EndVotationModal({ isOpen, setIsOpen, playerList, modalType, mos
             tie();
             return
         }
-        window.reload()
+        window.location.reload()
     }
 
 
