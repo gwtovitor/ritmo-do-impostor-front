@@ -22,22 +22,10 @@ export function Voting({ isOpen, setOpenModalStart, playerList, playerInfo, sock
         setOpenEndVotation(true)
     })
 
-    socket.on('playerWin', (mostVoted) => {
-        setModalType('playersWin')
-        setOpenEndVotation(true)
-        setMostVoted(mostVoted)
-    })
-
     socket.on('mostVoted', (mostVoted) => {
         setModalType('')
         setOpenEndVotation(true)
         setMostVoted(mostVoted)
-    })
-
-    socket.on('impostorWin', (mostVoted) => {
-        setMostVoted(mostVoted)
-        setModalType('impostorWin')
-        setOpenEndVotation(true)
     })
 
     return (

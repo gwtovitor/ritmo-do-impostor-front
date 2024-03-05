@@ -1,0 +1,13 @@
+@import '../../styles/styles.module.scss';
+.disconnect{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    .bgImg{
+        position: absolute;
+    }
+}
