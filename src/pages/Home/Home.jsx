@@ -42,12 +42,12 @@ export default function Home() {
         setMusic(music)
     })
     socket.on('impostorDisconnect', () => {
-        setIsImpostor(true)
+        setIsImpostor(false)
         setDisconnect(true)
         setCurrentPage('endGame')
     })
     socket.on('impostorWinDisconnect', () => {
-        setIsImpostor(false)
+        setIsImpostor(true)
         setDisconnect(true)
         setCurrentPage('endGame')
     })

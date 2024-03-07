@@ -8,6 +8,26 @@
     position: absolute;
     flex-direction: column;
     .bgImg{
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .textWrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 12px;
         position: absolute;
+        bottom: 24px;
+        background-color: #5a396e;
+        height: 100px;
+        width: 80%;
+        padding: 24px;
+        box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
+        span{
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
     }
 }

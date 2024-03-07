@@ -1,6 +1,6 @@
 import styles from './endGame.module.scss'
 import impostorWin from '../../../public/Images/impostorWin.jpg'
-import playersWin from '../../../public/Images/playersWin.jpg'
+import playersWin from '../../../public/Images/playersWin.webp'
 
 export default function EndGame({ open, setCurrentPage, playerInfo, playerList, isImpostor, disconnect }) {
     if (!open) return
@@ -11,7 +11,6 @@ export default function EndGame({ open, setCurrentPage, playerInfo, playerList, 
     }
     return (
         <div className={styles.disconnect} style={{ backgroundColor: isImpostor ? '#5a396e' : '#facd9d' }}>
-            <img style={styles.bgImg} src={isImpostor ? impostorWin : playersWin} />
             {disconnect ?
                 isImpostor ?
                     <span>O impostor se desconectou do jogo !</span>
@@ -20,8 +19,13 @@ export default function EndGame({ open, setCurrentPage, playerInfo, playerList, 
                 : isImpostor ?
                     <span>{findImpostor('id') == playerInfo.id ? 'Você venceu' : 'impostor venceu'}</span>
                     :
-                    <span>{findImpostor('id') == playerInfo.id ? 'Você perdeu' : 'Jogadores venceram'}</span>
+                    <div className={styles.textWrapper}>
+                        <span >{findImpostor('id') == playerInfo.id ? 'Você perdeu' : 'Jogadores venceram'}</span>
+                        <button className={`${styles.button} ${styles.primary}`}>Voltar ao menu</button>
+                    </div>
+
             }
+            <img className={styles.bgImg} src={isImpostor ? impostorWin : playersWin} />
         </div>
     )
 }
