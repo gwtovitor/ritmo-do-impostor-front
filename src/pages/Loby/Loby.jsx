@@ -2,6 +2,7 @@ import styles from './loby.module.scss'
 import PlayerList from '../../components/PlayerList/PlayerList'
 import { Toast } from '../../components/Toast/Toast';
 import { useState } from 'react';
+import { SelectPlaylistModal } from '../../components/SelectPlaylistModal/SelectPlaylistModal';
 
 const playLists = [
     'pagode',
@@ -43,6 +44,7 @@ export default function Loby({
     if (!playerList) return
     return (
         <div className={styles.lobyWrapper}>
+            <SelectPlaylistModal isOpen={true}/>
             <div className={styles.loby}>
                 <div className={styles.hashWrapper}>
                     <div>Click para copiar o codigo</div>
