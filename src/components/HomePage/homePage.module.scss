@@ -1,28 +1,74 @@
-@import '../../styles/styles.module.scss';
+@import "../../styles/styles.module.scss";
+
+// .home {
+//   position: relative;
+//   background-color: var(--secundary-200);
+//   width: 100%;
+//   max-width: 600px;
+//   height: 100%;
+//   display: flex;
+//   // justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   .buttonsWrapper {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 24px;
+//     .nameWrapper{
+//       width: 100%;
+//       margin-bottom: 32px;
+//       input{
+//        width: 100%;
+//       }
+//     }
+//   }
+//   .error{
+//     color: red;
+//   }
+// }
 
 .home {
-  position: relative;
-  background-color: #ff9e04;
-  width: 100%;
-  max-width: 600px;
-  height: 100%;
-  display: flex;
-  // justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  .buttonsWrapper {
+    background-color: var(--secundary-200);
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 24px;
-    .nameWrapper{
-      width: 100%;
-      margin-bottom: 32px;
-      input{
-       width: 100%;
-      }
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    .body {
+        flex-direction: column;
+        width: 100%;
+        height: 95%;
+        background-color: var(--primary-400);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 23px;
+        .buttonsWrapper{
+          display: flex;
+          flex-direction: column;
+          gap: 23px;
+          z-index: 2;
+          margin: 12px;
+          .inputWrapper{
+            position: relative;
+            display: flex;
+            min-width: 100%;
+            .customBtn{
+              position: absolute;
+              z-index: 3;
+            }
+          }
+        }
+        .logo {
+            // position: absolute;
+            // top: 200px;
+            display: flex;
+            align-self: center;
+            width: 300px;
+            height: 150px;
+            mix-blend-mode: multiply;
+        }
     }
-  }
-  .error{
-    color: red;
-  }
 }

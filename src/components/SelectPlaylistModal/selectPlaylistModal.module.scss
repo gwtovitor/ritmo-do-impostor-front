@@ -5,13 +5,17 @@
   top: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  // align-items: center;
+  // flex-direction: column;
+  height: 70%;
+  max-width: 550px;
+  padding: 12px;
   gap: 6px;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #f43b64;
-  box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
+  background-color: black;
+  overflow-y: auto;
+  // box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 1);
   z-index: 20;
- 
+  flex-wrap: wrap;
 }

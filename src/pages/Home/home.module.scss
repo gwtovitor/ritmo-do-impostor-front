@@ -4,7 +4,7 @@
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  font-family: "Bowlby One", cursive;
+  // font-family: "Bowlby One", cursive;
 }
 * {
   margin: 0;
@@ -12,12 +12,11 @@
 }
 
 .homeWrapper {
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  background-color: black;
-  
+  background-color: black;  
 }

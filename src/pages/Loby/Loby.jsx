@@ -51,12 +51,7 @@ export default function Loby({
                     <span onClick={() => { navigator.clipboard.writeText(hash) }}>{hash}</span>
                 </div>
                 {isAdmin(playerList, playerInfo) &&
-                    <select onChange={handleSelectChange}>
-                        <option>Selecione uma playlist</option>
-                        {playLists.map((listName, i) => (
-                            <option key={`options_${i}`} value={listName}>{listName}</option>
-                        ))}
-                    </select>
+                   <span>Selecionar uma playlist</span>
                 }
                 <PlayerList playerInfo={playerInfo} playerList={playerList} />
                 {isAdmin(playerList, playerInfo) && <button className={`${styles.button} ${styles.startBtn}`} onClick={() => { toPlay() }}>Jogar !</button>}

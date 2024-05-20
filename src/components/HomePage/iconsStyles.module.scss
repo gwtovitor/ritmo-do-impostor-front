@@ -1,0 +1,30 @@
+.icons{
+  height: 150px;
+  position: absolute;
+  mix-blend-mode: multiply;
+  z-index: 1;
+  &.menu1{
+    bottom: 20px;
+    left: -20px
+  }
+  &.menu2{
+    top: 0;
+    left: 0;
+  }
+  &.menu4{
+    top: -40px;
+    right: 0;
+  }
+  &.menu8{
+    top: 50%;
+    right: 0;
+  }
+  &.menu5{
+    bottom: -30px;
+    left: 30px;
+  }
+  &.menu7{
+    bottom: -10px;
+    right: 0;
+  }
+}

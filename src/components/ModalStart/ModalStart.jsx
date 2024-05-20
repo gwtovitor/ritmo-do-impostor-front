@@ -1,33 +1,39 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react'
-import styles from './voting.module.scss'
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import { useEffect, useState } from "react";
+import styles from "./voting.module.scss";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
 
-export function ModalStart({ isOpen, start, socket, hash, setOpenModalStart, isImpostor }) {
-    const [text, setText] = useState('')
+export function ModalStart({
+    isOpen,
+    start,
+    socket,
+    hash,
+    setOpenModalStart,
+}) {
+    const [text, setText] = useState("");
+
     const onComplete = () => {
-        socket.emit('iamReady', { hash: hash })
-        setText('Aguardando outros jogadores')
-    }
+        socket.emit("iamReady", { hash: hash });
+        setText("Aguardando outros jogadores");
+    };
     useEffect(() => {
         if (start) {
-            setOpenModalStart(false)
+            setOpenModalStart(false);
         }
-    }, [start])
+    }, [start]);
     return (
         <div className={styles.voting}>
-
             <CountdownCircleTimer
                 isPlaying={isOpen}
                 duration={2}
                 onComplete={() => onComplete()}
-                colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
                 colorsTime={[7, 5, 2, 0]}
             >
-                {({ remainingTime }) => {return <div>{text != '' ? text : remainingTime}</div>}}
+                {({ remainingTime }) => {
+                    return <div>{text != "" ? text : remainingTime}</div>;
+                }}
             </CountdownCircleTimer>
-
-
         </div>
-    )
+    );
 }
